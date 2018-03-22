@@ -1,7 +1,7 @@
 # javascript-craft
 收集javascript的各种奇技淫巧
 
-## compose合并函数依次执行 - 来源redux
+### 1. compose合并函数依次执行 - 来源redux
 
 ```javascript
 function compose(...funcs) {
