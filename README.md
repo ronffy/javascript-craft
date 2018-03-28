@@ -44,3 +44,18 @@ function template(tpl, data) {
 template('我是{{name}}，年龄{{age}}，性别{{sex}}', {name: '王海荣', age: 18, sex: '男'}); 
 // "我是王海荣，年龄18，性别男"
 ```
+
+### 4. 数字转为千分位字符
+
+```javascript
+/**
+ * 数字转为千分位字符
+ * @param {Number} num
+ * @param {Number} point 保留几位小数，默认2位
+ */
+function parseToThousandth(num, point = 2) {
+  	let [sInt, sFloat] = (Number.isInteger(num) ? `${num}` : num.toFixed(point)).split('.');
+  	sInt = sInt.replace(/(?=(\d{3})+$)/g, '$&,');
+	  return sFloat ? `${sInt}.${sFloat}` : `${sInt}`;
+}
+```
