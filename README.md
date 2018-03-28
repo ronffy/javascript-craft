@@ -54,8 +54,8 @@ template('我是{{name}}，年龄{{age}}，性别{{sex}}', {name: '王海荣', a
  * @param {Number} point 保留几位小数，默认2位
  */
 function parseToThousandth(num, point = 2) {
-  	let [sInt, sFloat] = (Number.isInteger(num) ? `${num}` : num.toFixed(point)).split('.');
-  	sInt = sInt.replace(/(?=(\d{3})+$)/g, '$&,');
-	  return sFloat ? `${sInt}.${sFloat}` : `${sInt}`;
+    let [sInt, sFloat] = (Number.isInteger(num) ? `${num}` : num.toFixed(point)).split('.');
+    sInt = sInt.replace(/(?=(\d{3})+$)/g, '$&,');
+    return sFloat ? `${sInt}.${sFloat}` : `${sInt}`;
 }
 ```
