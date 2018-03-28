@@ -14,6 +14,7 @@ function compose(...funcs) {
   return funcs.reduce((a, b) => (...args) => a(b(...args)))
 }
 ```
+
 ### 2. 从浏览器输入网址到页面渲染完成，发生了什么事情？
 
 ```bash
@@ -30,4 +31,15 @@ function compose(...funcs) {
 -> 首屏内容加载完成(首屏时间)
 -> 用户可交互(DOMContentLoaded)
 -> 加载完成(load)
+```
+
+### 3. 一行代码实现简单模版引擎
+
+```javascript
+function template(tpl, data) {
+  return tpl.replace(/{{(.*?)}}/g, (match, key) => data[key.trim()]);
+}
+
+// 使用：
+template('我是{{name}}，年龄{{age}}，性别{{sex}}', {name: '王海荣', age: 18, sex: '男'}); // "我是王海荣，年龄18，性别男"
 ```
