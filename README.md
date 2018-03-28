@@ -41,5 +41,6 @@ function template(tpl, data) {
 }
 
 // 使用：
-template('我是{{name}}，年龄{{age}}，性别{{sex}}', {name: '王海荣', age: 18, sex: '男'}); // "我是王海荣，年龄18，性别男"
+template('我是{{name}}，年龄{{age}}，性别{{sex}}', {name: '王海荣', age: 18, sex: '男'}); 
+// "我是王海荣，年龄18，性别男"
 ```
