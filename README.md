@@ -14,8 +14,9 @@ function compose(...funcs) {
   return funcs.reduce((a, b) => (...args) => a(b(...args)))
 }
 ```
-### 2.从浏览器输入网址到页面渲染完成，发生了什么事情？
+### 2. 从浏览器输入网址到页面渲染完成，发生了什么事情？
 
+```bash
 -> 浏览器解析
 -> 查询缓存
 -> dns查询
@@ -29,3 +30,4 @@ function compose(...funcs) {
 -> 首屏内容加载完成(首屏时间)
 -> 用户可交互(DOMContentLoaded)
 -> 加载完成(load)
+```
