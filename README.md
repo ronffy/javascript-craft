@@ -1,5 +1,5 @@
 # javascript-craft
-收集javascript的各种奇技淫巧
+整理javascript的各种奇技淫巧
 
 ### 1. compose合并函数依次执行 - 来源redux
 
@@ -54,8 +54,47 @@ template('我是{{name}}，年龄{{age}}，性别{{sex}}', {name: '王海荣', a
  * @param {Number} point 保留几位小数，默认2位
  */
 function parseToThousandth(num, point = 2) {
-    let [sInt, sFloat] = (Number.isInteger(num) ? `${num}` : num.toFixed(point)).split('.');
-    sInt = sInt.replace(/\d(?=(\d{3})+$)/g, '$&,');
-    return sFloat ? `${sInt}.${sFloat}` : `${sInt}`;
+  let [sInt, sFloat] = (Number.isInteger(num) ? `${num}` : num.toFixed(point)).split('.');
+  sInt = sInt.replace(/\d(?=(\d{3})+$)/g, '$&,');
+  return sFloat ? `${sInt}.${sFloat}` : `${sInt}`;
+}
+```
+
+### 5. 带延时功能的链式调用
+
+```javascript
+
+// 1) 调用方式
+new People('whr').sleep(3).eat('apple').sleep(5).eat('durian');
+
+// 2) 打印结果
+'hello, whr' -(等待3s)--> 'whr eat apple' -(等待5s)--> 'whr eat durian'
+
+// 3) 以下是代码实现
+class People {
+  constructor(name) {
+    this.name = name;
+    this.sayHello();
+    this.queue = Promise.resolve();
+  }
+  sayHello() {
+    console.log(`hello, ${this.name}`);
+  }
+  sleep(time) {
+    this.queue = this.queue.then(() => {
+      return new Promise(res => {
+        setTimeout(() => {
+          res();
+        }, time * 1000)
+      })
+    })
+    return this;
+  }
+  eat(food) {
+    this.queue = this.queue.then(() => {
+      console.log(`${this.name} eat ${food}`);
+    })
+    return this;
+  }
 }
 ```
