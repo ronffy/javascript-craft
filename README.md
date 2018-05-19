@@ -50,35 +50,29 @@ function parseToThousandth(num, point = 2) {
 ```javascript
 
 // 1) 调用方式
-new People('whr').sleep(3).eat('apple').sleep(5).eat('durian');
+new People('whr').sleep(3000).eat('apple').sleep(5000).eat('durian');
 
 // 2) 打印结果
-'hello, whr' -(等待3s)--> 'whr eat apple' -(等待5s)--> 'whr eat durian'
+(等待3s)--> 'whr eat apple' -(等待5s)--> 'whr eat durian'
 
 // 3) 以下是代码实现
 class People {
   constructor(name) {
     this.name = name;
-    this.sayHello();
     this.queue = Promise.resolve();
-  }
-  sayHello() {
-    console.log(`hello, ${this.name}`);
-  }
-  sleep(time) {
-    this.queue = this.queue.then(() => {
-      return new Promise(res => {
-        setTimeout(() => {
-          res();
-        }, time * 1000)
-      })
-    })
-    return this;
   }
   eat(food) {
     this.queue = this.queue.then(() => {
-      console.log(`${this.name} eat ${food}`);
-    })
+      console.log(`${this.name} eat ${food}`)
+    });
+    return this;
+  }
+  sleep(time = 0) {
+    this.queue = this.queue.then(() => new Promise(res => {
+      setTimeout(() => {
+        res();
+      }, time);
+    }))
     return this;
   }
 }
