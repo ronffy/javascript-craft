@@ -15,8 +15,21 @@ function compose(...funcs) {
 }
 ```
 
-### 2. 
+### 2. 异步请求的多次请求尝试
 
+请求成功后，break语句会停止for循环；
+请求失败后，catch捕获错误，进入下次循环。
+
+```
+async function trySometimeRequest(time){
+  for (let i = 0; i < time; i++) {
+    try {
+      await fetch('xxx');
+      break;
+    } catch (error) {}
+  }
+}
+```
 
 ### 3. 一行代码实现简单模版引擎
 
