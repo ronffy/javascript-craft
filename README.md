@@ -20,7 +20,7 @@ function compose(...funcs) {
 请求成功后，break语句会停止for循环；
 请求失败后，catch捕获错误，进入下次循环。
 
-```
+```javascript
 async function trySometimeRequest(time){
   for (let i = 0; i < time; i++) {
     try {
