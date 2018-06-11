@@ -90,3 +90,7 @@ class People {
   }
 }
 ```
+
+### 汇总各种异步请求的场景及解决方案
+
+[汇总各种异步请求的场景及解决方案](https://github.com/ronffy/javascript-craft/blob/master/every-async.md)
