@@ -1,10 +1,10 @@
 # 汇总各种异步请求的场景及解决方案
 
-## 单个异步
+### 单个异步
 
-## 用generator实现async
+### 用generator实现async
 
-### 如何使用
+#### 如何使用
 除了generator和async的语法区别外，使用区别是在generator函数外包一个execut自执行函数
 
 ```javascript
@@ -15,13 +15,13 @@ execut(function* g(){
 })
 ```
 
-### 如何实现execut自执行函数
+#### 如何实现execut自执行函数
 ```javascript
 function execut(genFn){
   return new Promise((res, rej) => {
     let gen = genFn();
     const step = genNext => {
-		  let next;
+      let next;
       try{
         next = genNext();
       }catch(e){
@@ -41,7 +41,7 @@ function execut(genFn){
 }
 ```
 
-## 多个异步
+### 多个异步
 
 
 
