@@ -94,3 +94,13 @@ class People {
 ### 6. 汇总各种异步请求的场景及解决方案
 
 [汇总各种异步请求的场景及解决方案](https://github.com/ronffy/javascript-craft/blob/master/every-async.md)
+
+### 7. 使用vscode编辑器，隐藏node_modules下_开头的文件夹，方便查看源码
+
+点击设置，进入 User Settings （用户设置），添加如下配置：
+
+```JSON
+"files.exclude": {
+  "**/node_modules/_**": true
+}
+```
