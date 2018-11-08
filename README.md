@@ -95,6 +95,7 @@ class People {
 
 [汇总各种异步请求的场景及解决方案](https://github.com/ronffy/javascript-craft/blob/master/every-async.md)
 
+
 ### 7. 使用vscode编辑器，隐藏node_modules下_开头的文件夹，方便查看源码
 
 点击设置，进入 User Settings （用户设置），添加如下配置：
@@ -103,4 +104,59 @@ class People {
 "files.exclude": {
   "**/node_modules/_**": true
 }
+```
+
+
+### 8. 对象取值防错机制
+
+#### 实现方式1
+
+```javascript
+function avoid(target, format) {
+  if (!format || typeof format !== 'string') return target;
+  let keys = format.split('.');
+  let resault = target;
+  for (const key of keys) {
+    if (resault) {
+      resault = resault[key];
+    } else {
+      return undefined;
+    }
+  }
+
+  return resault;
+}
+```
+
+#### 实现方式2（更符合取值理念，但修改原生对象的原型，谨慎使用）
+
+
+```javascript
+Object.prototype.getItem = function(format) {
+  if (!format || typeof format !== 'string') return this;
+  let keys = format.split('.');
+  let resault = this;
+  for (const key of keys) {
+    if (resault) {
+      resault = resault[key];
+    } else {
+      return undefined;
+    }
+  }
+
+  return resault;
+}
+```
+
+例如：
+```javascript
+let a = {}
+
+let v1 = a.b.c.d; // 报错
+
+let v2 = a && a.b && a.b.c && a.b.c.d; // 冗余代码太多
+
+let v2 = avoid(a, 'b.c.d'); // 简便写法1
+
+let v3 = a.getItem('b.c.d'); // 简便写法2
 ```
