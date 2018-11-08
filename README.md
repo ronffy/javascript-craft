@@ -156,7 +156,7 @@ let v1 = a.b.c.d; // 报错
 
 let v2 = a && a.b && a.b.c && a.b.c.d; // 冗余代码太多
 
-let v2 = avoid(a, 'b.c.d'); // 简便写法1
+let v3 = avoid(a, 'b.c.d'); // 简便写法1
 
-let v3 = a.getItem('b.c.d'); // 简便写法2
+let v4 = a.getItem('b.c.d'); // 简便写法2
 ```
