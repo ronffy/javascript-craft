@@ -160,3 +160,27 @@ let v3 = avoid(a, 'b.c.d'); // 简便写法1
 
 let v4 = a.getItem('b.c.d'); // 简便写法2
 ```
+
+
+### 9. 用reduce实现的简版deepclone
+
+```javascript
+
+function deepclone(o) {
+  const keys = Object.keys(o);
+  return keys.reduce((memo, currKey) => {
+    const value = o[currKey];
+    if (value && typeof value === 'object') {
+      return {
+        ...memo,
+        [currKey]: deepClone(value)
+      }
+    }
+    return {
+      ...memo,
+      [currKey]: value
+    }
+  }, {})
+}
+
+```
