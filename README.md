@@ -1,7 +1,7 @@
 # javascript-craft
 整理javascript的各种奇技淫巧
 
-### 1. compose合并函数依次执行 - 来源redux
+### 1.compose合并函数依次执行 - 来源redux
 
 ```javascript
 function compose(...funcs) {
@@ -15,7 +15,7 @@ function compose(...funcs) {
 }
 ```
 
-### 2. 异步请求的多次请求尝试
+### 2.异步请求的多次请求尝试
 
 请求成功后，break语句会停止for循环；
 请求失败后，catch捕获错误，进入下次循环。
@@ -31,7 +31,7 @@ async function trySometimeRequest(time){
 }
 ```
 
-### 3. 一行代码实现简单模版引擎
+### 3.一行代码实现简单模版引擎
 
 ```javascript
 function template(tpl, data) {
@@ -43,7 +43,7 @@ template('我是{{name}}，年龄{{age}}，性别{{sex}}', {name: '王海荣', a
 // "我是王海荣，年龄18，性别男"
 ```
 
-### 4. 数字转为千分位字符
+### 4.数字转为千分位字符
 
 ```javascript
 /**
@@ -58,7 +58,7 @@ function parseToThousandth(num, point = 2) {
 }
 ```
 
-### 5. 带延时功能的链式调用
+### 5.带延时功能的链式调用
 
 ```javascript
 
@@ -91,12 +91,12 @@ class People {
 }
 ```
 
-### 6. 汇总各种异步请求的场景及解决方案
+### 6.汇总各种异步请求的场景及解决方案
 
 [汇总各种异步请求的场景及解决方案](https://github.com/ronffy/javascript-craft/blob/master/every-async.md)
 
 
-### 7. 使用vscode编辑器，隐藏node_modules下_开头的文件夹，方便查看源码
+### 7.使用vscode编辑器，隐藏node_modules下_开头的文件夹，方便查看源码
 
 点击设置，进入 User Settings （用户设置），添加如下配置：
 
@@ -107,7 +107,7 @@ class People {
 ```
 
 
-### 8. 对象取值防错机制
+### 8.对象取值防错机制
 
 #### 实现方式1
 
@@ -162,7 +162,7 @@ let v4 = a.getItem('b.c.d'); // 简便写法2
 ```
 
 
-### 9. 用reduce实现的简版deepclone
+### 9.用reduce实现的简版deepclone
 
 ```javascript
 
@@ -183,4 +183,10 @@ function deepclone(o) {
   }, {})
 }
 
+```
+
+### 10.快速生成包含26个字母的数组
+```js
+Array.from({length: 26}, (_, i) => String.fromCharCode(65 + i));
+// ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 ```
